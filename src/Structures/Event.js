@@ -1,29 +1,16 @@
-/** @format */
-
-const Discord = require("discord.js");
-
-const Client = require("./Client.js");
-
-/**
- *
- * @param {client} client
- * @param  {Discord.ClientEvents[k]} eventArgs
- */
-function runFunction(client, ...eventArgs) {}
-
-/**
- * @template
- */
-class Event {
-  /**
-   *
-   * @param {k} event
-   * @param {RunFunction<k>} runFunction
-   */
-  constructor(event, runFunction) {
-    this.event = event;
-    this.run = runFunction;
+module.exports = class Event {
+  constructor(client, name, options = {}) {
+    this.name = name;
+    this.client = client;
+    this.type = options.once ? "once" : "on";
+    this.emitter =
+      (typeof options.emitter === "string"
+        ? this.client[options.emitter]
+        : options.emitter) || this.client;
   }
-}
 
-module.exports = Event;
+  // eslint-disable-next-line no-unused-vars
+  async run(...args) {
+    throw new Error(`The run method has not been implemented in ${this.name}`);
+  }
+};
