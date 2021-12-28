@@ -1,6 +1,6 @@
-const DoodleClient = require("../src/Structures/DoodleClient.js");
+const NewNameHere = require("../src/Structures/NewNameHere.js");
 const config = require("./config.json");
-const client = new DoodleClient(config);
+const client = new NewNameHere(config);
 
 
 client.start();
