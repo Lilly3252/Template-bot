@@ -5,7 +5,7 @@ module.exports = class extends Event {
       once: false,
     });
   }
-  run(oldState, newState) {
+  run(param1, param2) {
     
   }
 };
